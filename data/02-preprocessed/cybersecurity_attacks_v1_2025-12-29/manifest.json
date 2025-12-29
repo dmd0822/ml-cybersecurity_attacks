@@ -1,0 +1,21 @@
+{
+  "created_utc": "2025-12-29T18:19:26+00:00",
+  "raw_csv_path": "C:\\repos\\ml-cybersecurity_attacks\\data\\01-raw\\teamincribo_cyber-security-attacks\\2025-12-29\\cybersecurity_attacks.csv",
+  "rows": 40000,
+  "cols": 26,
+  "target_col": "Attack Type",
+  "seed": 42,
+  "fractions": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "artifacts": {
+    "cleaned_data": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\cleaned.parquet",
+    "split": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\split.csv",
+    "class_map": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\attack_type_classes.json",
+    "feature_audit": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\feature_audit.csv",
+    "baseline_feature_config": "C:\\repos\\ml-cybersecurity_attacks\\config\\baseline_feature_config.json",
+    "baseline_feature_config_snapshot": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\baseline_feature_config.json"
+  }
+}

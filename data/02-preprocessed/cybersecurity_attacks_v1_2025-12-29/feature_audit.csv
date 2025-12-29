@@ -1,0 +1,27 @@
+feature,dtype,missing_pct,n_unique,avg_len,p95_len,max_len,suggested_action,transform_kind,reason
+IDS/IPS Alerts,string,50.12,1,10.0,10.0,10.0,drop,,high-cardinality identifier (likely)
+Proxy Information,string,49.63,20148,13.22,15.0,15.0,drop,,too missing (baseline)
+row_id,object,0.0,40000,10.0,10.0,10.0,drop,,surrogate key
+Source IP Address,string,0.0,40000,13.24,15.0,15.0,drop,,high-cardinality identifier (likely)
+Destination IP Address,string,0.0,40000,13.26,15.0,15.0,drop,,high-cardinality identifier (likely)
+Payload Data,string,0.0,40000,140.39,194.0,199.0,drop,,free-text/log-like (one-hot unfriendly)
+User Information,string,0.0,32389,12.21,17.0,24.0,drop,,high-cardinality categorical (baseline)
+Device Information,string,0.0,32104,92.03,146.0,147.0,drop,,free-text/log-like (one-hot unfriendly)
+Geo-location Data,string,0.0,8723,19.13,27.0,47.0,drop,,high-cardinality categorical (baseline)
+Alerts/Warnings,string,50.17,1,15.0,15.0,15.0,keep,,binary-ish; treat missing as category
+Malware Indicators,string,50.0,1,12.0,12.0,12.0,keep,,binary-ish; treat missing as category
+Firewall Logs,string,49.9,1,8.0,8.0,8.0,keep,,binary-ish; treat missing as category
+Anomaly Scores,float64,0.0,9826,,,,keep,,ok for baseline
+Packet Length,int64,0.0,1437,,,,keep,,ok for baseline
+Protocol,string,0.0,3,3.33,4.0,4.0,keep,,ok for baseline
+Traffic Type,string,0.0,3,3.34,4.0,4.0,keep,,ok for baseline
+Action Taken,string,0.0,3,6.67,7.0,7.0,keep,,ok for baseline
+Severity Level,string,0.0,3,4.35,6.0,6.0,keep,,ok for baseline
+Network Segment,string,0.0,3,9.0,9.0,9.0,keep,,ok for baseline
+Packet Type,string,0.0,2,5.53,7.0,7.0,keep,,ok for baseline
+Attack Signature,string,0.0,2,15.0,15.0,15.0,keep,,ok for baseline
+Log Source,string,0.0,2,7.0,8.0,8.0,keep,,ok for baseline
+Attack Type,string,0.0,3,6.69,9.0,9.0,target,,label column
+Timestamp,"datetime64[ns, UTC]",0.0,39997,,,,transform,timestamp,extract time-based features
+Destination Port,int64,0.0,29895,,,,transform,port,bucket/parse port features
+Source Port,int64,0.0,29761,,,,transform,port,bucket/parse port features

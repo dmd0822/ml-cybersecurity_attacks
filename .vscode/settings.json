@@ -1,0 +1,11 @@
+{
+  // Ensure VS Code uses the project virtual environment.
+  // (Windows path; VS Code also understands forward slashes.)
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+
+  // Auto-activate the selected environment in new terminals.
+  "python.terminal.activateEnvironment": true,
+
+  // Prefer the active interpreter for notebooks.
+  "jupyter.pythonExecutionService": "python"
+}

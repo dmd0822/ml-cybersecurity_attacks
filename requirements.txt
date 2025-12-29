@@ -11,8 +11,14 @@ matplotlib
 jupyter
 ipykernel
 
+# Kaggle dataset download
+kaggle
+
 # Utilities
 tqdm
+
+# Models (optional)
+xgboost
 
 # Testing
 pytest

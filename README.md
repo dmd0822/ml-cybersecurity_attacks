@@ -101,6 +101,43 @@ python -m ipykernel install --user --name ml-project-structure --display-name "P
 - Add pipeline logic under `src/pipelines/`.
 - Add tests under `tests/`.
 
+## Kaggle Dataset
+
+This project is intended to work with the Kaggle dataset:
+
+- `teamincribo/cyber-security-attacks`
+
+### Kaggle API Setup
+
+1. Create a Kaggle API token:
+
+- Kaggle → Account → **Create New API Token**
+- This downloads `kaggle.json`
+
+1. Put `kaggle.json` in the standard location:
+
+- **Windows**: `%USERPROFILE%\.kaggle\kaggle.json`
+- **macOS/Linux**: `~/.kaggle/kaggle.json`
+
+1. Verify the CLI works:
+
+```bash
+kaggle --version
+```
+
+### Download + Snapshot Into data/01-raw
+
+Recommended workflow:
+
+1. Download/unzip into `downloads/` (ignored by `.gitignore`).
+2. Copy an immutable snapshot into `data/01-raw/` under a dated folder.
+
+If you use the provided entry point script:
+
+```bash
+python entrypoints/download_kaggle_dataset.py
+```
+
 ## Project Structure
 
 High-level layout:

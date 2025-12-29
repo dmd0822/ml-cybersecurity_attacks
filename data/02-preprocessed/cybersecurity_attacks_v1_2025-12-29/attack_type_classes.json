@@ -1,0 +1,13 @@
+{
+  "target": "Attack Type",
+  "classes": [
+    "DDoS",
+    "Intrusion",
+    "Malware"
+  ],
+  "class_to_index": {
+    "DDoS": 0,
+    "Intrusion": 1,
+    "Malware": 2
+  }
+}
