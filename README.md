@@ -10,7 +10,7 @@ It emphasizes:
 
 - A **staged data layout** (raw → preprocessed → features → predictions)
 - **Pipelines as code** (feature engineering, training, inference) instead of ad-hoc scripts
-- **Explicit entrypoints** for training and inference (useful for CI, Docker, and scheduled runs)
+- **Explicit entry points** for training and inference (useful for CI, Docker, and scheduled runs)
 - **Config separated** from code to support local vs production behaviors
 - **Tests from day one** to keep refactors safe
 - **Infrastructure as Code** support via `infra/` for reproducible environments
@@ -22,7 +22,7 @@ This template is intentionally minimal; you choose the libraries that fit your p
 - **Language:** Python (recommended)
 - **Environment management:** `venv` (recommended)
 - **Dependencies:** `pip` via `requirements.txt` (starter set included)
-- **Notebooks (optional):** Jupyter, stored in `notebooks/`
+- **Notebooks (optional):** `jupyter`, stored in `notebooks/`
 - **Containerization (optional):** Docker (a `Dockerfile` is present but currently empty)
 - **Testing (recommended):** `pytest`
 
@@ -36,6 +36,7 @@ flowchart LR
   B --> C[data/03-features]
   C --> D[src/pipelines]
   D --> E[data/04-predictions]
+  D --> K[reports]
   D --> F[entry points]
   G[config] --> D
   H[tests] --> D
@@ -84,7 +85,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-1. (Optional) Register a Jupyter kernel for this env:
+1. (Optional) Register an IPython kernel for this env:
 
 ```bash
 python -m ipykernel install --user --name ml-project-structure --display-name "Python (ml-project-structure)"
@@ -105,6 +106,10 @@ python -m ipykernel install --user --name ml-project-structure --display-name "P
 High-level layout:
 
 ```text
+Dockerfile               # (Optional) Container build recipe (currently empty)
+LICENSE                  # Project license
+README.md                # This documentation
+requirements.txt         # Python dependencies
 config/                 # Configuration (e.g., local vs prod settings)
 data/
   01-raw/               # Immutable raw inputs
@@ -114,6 +119,7 @@ data/
 entrypoints/            # Executable scripts (training, inference, batch jobs)
 infra/                  # Infrastructure as Code (provisioning/deploy)
 notebooks/              # EDA and experiments (kept separate from prod code)
+reports/                # Generated reports (figures, summaries, artifacts)
 src/
   pipelines/            # Reusable ML pipelines (feature, train, infer)
 tests/                  # Unit/integration tests
@@ -126,17 +132,18 @@ See the folder-level docs for details:
 - [data/02-preprocessed/README.md](data/02-preprocessed/README.md)
 - [data/03-features/README.md](data/03-features/README.md)
 - [data/04-predictions/README.md](data/04-predictions/README.md)
-- [entrypoints/README.md](entrypoints/README.md)
+- [entry points/README.md](entrypoints/README.md)
 - [infra/README.md](infra/README.md)
 - [notebooks/README.md](notebooks/README.md)
-- [src/pipelines/README.md](src/pipelines/README.md)
+- [reports/README.md](reports/README.md)
+- [pipelines/README.md](src/pipelines/README.md)
 - [tests/README.md](tests/README.md)
 
 ## Key Features
 
 - Clear staged `data/` pipeline (raw → preprocessed → features → predictions)
 - Pipelines as reusable code (`src/pipelines/`) instead of one-off scripts
-- Explicit operational entrypoints (`entrypoints/`) to simplify automation
+- Explicit operational entry points (`entrypoints/`) to simplify automation
 - Infrastructure as Code support (`infra/`) for reproducible environments
 - Separate configuration directory (`config/`) to avoid hard-coding behavior
 - Tests included from the start (`tests/`)
@@ -150,7 +157,7 @@ No single workflow is enforced, but the structure is designed to support a pragm
 2. Turn stable logic into pipelines in `src/pipelines/`.
 3. Create runnable scripts in `entrypoints/` for training/inference.
 4. Add/expand tests in `tests/` as pipelines stabilize.
-5. (Optional) Containerize entrypoints for reproducible runs.
+5. (Optional) Containerize entry points for reproducible runs.
 6. (Optional) Provision/deploy runtime resources via `infra/`.
 
 Branching strategy is not prescribed by this template; a common default is feature branches with pull requests into `main`.
@@ -187,7 +194,7 @@ pytest
 
 This repo is intended as a starting point. If you extend this template:
 
-- Keep the folder responsibilities consistent (pipelines vs entrypoints vs notebooks)
+- Keep the folder responsibilities consistent (pipelines vs entry points vs notebooks)
 - Update the relevant folder `README.md` when you add conventions
 - Prefer small, testable pipeline functions
 - Follow the Python coding standards described above
