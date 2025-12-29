@@ -11,7 +11,7 @@ Each notebook:
 - Builds a ColumnTransformer with OneHotEncoder for categoricals
 - Trains/evaluates a model (or runs clustering + evaluates vs labels)
 
-The resulting notebooks are written to `notebooks/` with filenames:
+The resulting notebooks are written under `notebooks/attack_type/` with filenames:
 `experiment_<model>_<datetime>.ipynb`
 
 Run:
@@ -42,7 +42,7 @@ except Exception as exc:  # pragma: no cover
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOKS_DIR = REPO_ROOT / "notebooks"
+NOTEBOOKS_DIR = REPO_ROOT / "notebooks" / "attack_type"
 
 
 @dataclass(frozen=True)
@@ -87,7 +87,12 @@ def _common_setup_cell() -> str:
         "from sklearn.preprocessing import OneHotEncoder, StandardScaler\n\n"
         "SEED = 42\n"
         "np.random.seed(SEED)\n\n"
-        "REPO_ROOT = Path.cwd().resolve().parents[0]  # notebooks/ -> repo root\n"
+        "# Resolve repo root robustly so this works from notebooks/ or notebooks/attack_type/.\n"
+        "cwd = Path.cwd().resolve()\n"
+        "candidates = [cwd] + list(cwd.parents)\n"
+        "REPO_ROOT = next((p for p in candidates if (p / 'src').exists() and (p / 'data').exists()), None)\n"
+        "if REPO_ROOT is None:\n"
+        "    raise FileNotFoundError('Could not locate repo root (expected src/ and data/).')\n"
         "sys.path.insert(0, str(REPO_ROOT))\n\n"
         "PREPROCESSED_ROOT = REPO_ROOT / 'data' / '02-preprocessed'\n"
         "BASELINE_CONFIG_JSON = REPO_ROOT / 'config' / 'baseline_feature_config.json'\n\n"

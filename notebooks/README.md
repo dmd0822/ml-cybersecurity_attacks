@@ -11,6 +11,8 @@ Keeping notebooks separate helps prevent exploratory code from drifting into pro
 - Visualizations and investigation notebooks
 - Notes that help you decide what to productionize
 
+Experiment notebooks for predicting `Attack Type` live under `notebooks/attack_type/`.
+
 ## What should NOT live here
 
 - Core pipeline logic that needs to be reused (move that to `src/pipelines/`)
