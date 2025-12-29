@@ -1,0 +1,14 @@
+{
+  "created_utc": "2025-12-29T22:32:11+00:00",
+  "task": "attack_type",
+  "model": "xgboost",
+  "prepared_dataset_dir": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29",
+  "prepared_manifest": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\manifest.json",
+  "baseline_feature_config": "C:\\repos\\ml-cybersecurity_attacks\\config\\baseline_feature_config.json",
+  "classes": [
+    "DDoS",
+    "Intrusion",
+    "Malware"
+  ],
+  "run_dir": "C:\\repos\\ml-cybersecurity_attacks\\data\\04-predictions\\attack_type\\training\\20251229_173211"
+}

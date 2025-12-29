@@ -23,6 +23,7 @@ Treat feature engineering, training, inference, and evaluation as pipelines rath
 src/
   pipelines/
     features/
+    attack_type/
     train/
     infer/
     evaluate/
@@ -39,6 +40,16 @@ src/
 ## Relationship to `entrypoints/`
 
 Entry points should be thin wrappers that call the functions defined here.
+
+## Attack Type training
+
+Training entrypoints for the multiclass `Attack Type` target:
+
+- `python entrypoints/train_attack_type_random_forest.py`
+- `python entrypoints/train_attack_type_xgboost.py`
+
+Artifacts are written under `data/04-predictions/attack_type/training/<timestamp>/`.
+All filenames are prefixed with `attack_type_*` for traceability.
 
 ## How This Fits
 
