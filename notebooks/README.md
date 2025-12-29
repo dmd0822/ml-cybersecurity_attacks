@@ -13,6 +13,12 @@ Keeping notebooks separate helps prevent exploratory code from drifting into pro
 
 Experiment notebooks for predicting `Attack Type` live under `notebooks/attack_type/`.
 
+Most of the timestamped notebooks in `notebooks/attack_type/` were generated via:
+
+```bash
+python entrypoints/generate_experiment_notebooks.py
+```
+
 ## What should NOT live here
 
 - Core pipeline logic that needs to be reused (move that to `src/pipelines/`)
@@ -42,4 +48,4 @@ Once an approach is working, extract the reusable parts into pipeline code so it
 
 - Reads inputs from [`data/01-raw/`](../data/01-raw/) and [`data/02-preprocessed/`](../data/02-preprocessed/)
 - Can write derived artifacts to [`data/02-preprocessed/`](../data/02-preprocessed/), [`data/03-features/`](../data/03-features/), or [`data/04-predictions/`](../data/04-predictions/)
-- Mature logic should move into [pipeline code](../s%72c/pipelines/) and be exercised via [`entrypoints/`](../entrypoints/)
+- Mature logic should move into pipeline code in `src/pipelines/` and be exercised via [`entrypoints/`](../entrypoints/)

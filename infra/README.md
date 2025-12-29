@@ -46,3 +46,7 @@ infra/
 ## Notes
 
 - If you add CI/CD later, `infra/` is where provisioning and deployment steps usually live.
+
+## Project note
+
+This repository currently runs pipelines locally (via `entrypoints/`) and stores artifacts under `data/`. If you later add cloud resources or scheduled execution, document the provisioning/deployment approach here.

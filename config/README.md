@@ -9,6 +9,11 @@ Configuration is kept separate from code so you can change runtime behavior (pat
 - Dataset locations and feature flags
 - Runtime settings (logging level, output directories)
 
+## Current files
+
+- `baseline_feature_config.json`: Canonical baseline feature rules used by dataset preparation, notebooks, and Attack Type training/inference.
+- `visualization.json`: Visualization settings used by the project’s EDA/reporting workflows.
+
 ## What should NOT live here
 
 - Secrets (API keys, passwords, tokens). Use environment variables or a secrets manager.

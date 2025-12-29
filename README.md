@@ -1,10 +1,14 @@
-# ML Project Structure (Template)
+# ML Cybersecurity Attacks
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Project Name and Description
+## Project Description
 
-This repository is a lightweight, opinionated template for starting new machine learning projects.
+This repository implements a reproducible ML workflow for the Kaggle dataset:
+
+- `teamincribo/cyber-security-attacks`
+
+The primary modeling task currently implemented is **multiclass classification of `Attack Type`**.
 
 It emphasizes:
 
@@ -19,12 +23,12 @@ It emphasizes:
 
 This template is intentionally minimal; you choose the libraries that fit your problem.
 
-- **Language:** Python (recommended)
-- **Environment management:** `venv` (recommended)
-- **Dependencies:** `pip` via `requirements.txt` (starter set included)
-- **Notebooks (optional):** `jupyter`, stored in `notebooks/`
-- **Containerization (optional):** Docker (a `Dockerfile` is present but currently empty)
-- **Testing (recommended):** `pytest`
+- **Language:** Python
+- **Environment management:** `venv`
+- **Dependencies:** `pip` via `requirements.txt`
+- **Notebooks:** `jupyter`, stored in `notebooks/`
+- **ML stack:** `scikit-learn`, `xgboost`
+- **Testing:** `pytest`
 
 ## Project Architecture
 
@@ -85,6 +89,42 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+## Quick Start: Attack Type workflow
+
+This is the typical end-to-end flow:
+
+1. (Optional) Download + snapshot the Kaggle dataset:
+
+```bash
+python entrypoints/download_kaggle_dataset.py
+```
+
+1. Prepare the dataset (clean + stratified train/validation/test split):
+
+```bash
+python entrypoints/prepare_dataset.py
+```
+
+1. Train models (artifacts saved to `data/04-predictions/attack_type/training/<timestamp>/`):
+
+```bash
+python entrypoints/train_attack_type_random_forest.py
+python entrypoints/train_attack_type_xgboost.py
+```
+
+1. Run inference (scores the latest prepared dataset using the latest trained model):
+
+```bash
+python entrypoints/infer_attack_type_random_forest.py --split test
+python entrypoints/infer_attack_type_xgboost.py --split test
+```
+
+1. Run tests:
+
+```bash
+pytest
+```
+
 1. (Optional) Register an IPython kernel for this env:
 
 ```bash
@@ -137,6 +177,23 @@ If you use the provided entry point script:
 ```bash
 python entrypoints/download_kaggle_dataset.py
 ```
+
+## Artifacts and conventions
+
+- Prepared datasets are written under `data/02-preprocessed/<output_name>/` and include:
+  - `cleaned.parquet` or `cleaned.csv`
+  - `split.csv` (shared stratified split)
+  - `attack_type_classes.json`
+  - `baseline_feature_config.json` and `feature_audit.csv`
+  - `manifest.json`
+- Training runs are written under `data/04-predictions/attack_type/training/<timestamp>/`.
+- Inference runs are written under `data/04-predictions/attack_type/inference/<timestamp>/`.
+- Output filenames are prefixed with `attack_type_*` (e.g., `attack_type_xgboost_model.joblib`).
+
+## Dependency note (model compatibility)
+
+Serialized scikit-learn pipelines (`joblib`) are sensitive to library version changes.
+This repo pins `scikit-learn` in `requirements.txt` so training/inference stay compatible.
 
 ## Project Structure
 

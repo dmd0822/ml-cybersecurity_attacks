@@ -1,5 +1,11 @@
-# cybersecurity_attacks
-Consists of 25 varied metrics and 40,000 records
+# cybersecurity_attacks (raw snapshot)
+
+This folder is an immutable snapshot of the Kaggle dataset at a point in time.
+
+- Raw file: `cybersecurity_attacks.csv`
+- Provenance: `provenance.json`
+
+Consists of 25 varied metrics and 40,000 records.
 
 Timestamp
 Source IP Address

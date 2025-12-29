@@ -43,13 +43,41 @@ Entry points should be thin wrappers that call the functions defined here.
 
 ## Attack Type training
 
-Training entrypoints for the multiclass `Attack Type` target:
+Training entry points for the multiclass `Attack Type` target:
 
 - `python entrypoints/train_attack_type_random_forest.py`
 - `python entrypoints/train_attack_type_xgboost.py`
 
+Common options:
+
+- Random Forest: `--n-estimators`, `--max-depth`, `--seed`
+- XGBoost: `--n-estimators`, `--max-depth`, `--learning-rate`, `--seed`
+
 Artifacts are written under `data/04-predictions/attack_type/training/<timestamp>/`.
 All filenames are prefixed with `attack_type_*` for traceability.
+
+## Attack Type inference
+
+Inference entry points (score the latest prepared dataset split using the latest
+trained model artifact):
+
+- `python entrypoints/infer_attack_type_random_forest.py --split test`
+- `python entrypoints/infer_attack_type_xgboost.py --split test`
+
+Common options:
+
+- `--split {train,val,test}`
+- `--limit N` (quick smoke runs)
+- `--model-path <path>` (score a specific saved model)
+
+## Dataset preparation
+
+Both notebooks and pipelines expect a prepared dataset under `data/02-preprocessed/`.
+To generate it from the raw snapshot in `data/01-raw/`:
+
+- `python entrypoints/prepare_dataset.py`
+
+Artifacts are written under `data/04-predictions/attack_type/inference/<timestamp>/`.
 
 ## How This Fits
 

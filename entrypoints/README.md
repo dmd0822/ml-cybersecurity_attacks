@@ -16,11 +16,26 @@ Keeping entry points explicit makes it much easier to:
 
 ## Suggested scripts (examples)
 
-You can add scripts like:
+## Current scripts
 
-- `train.py` (train a model)
-- `predict.py` (generate predictions)
-- `evaluate.py` (compute metrics / reports)
+### Data
+
+- `download_kaggle_dataset.py`: Download and snapshot the Kaggle dataset into `data/01-raw/`.
+- `prepare_dataset.py`: Clean the latest raw snapshot and write a prepared dataset + shared split into `data/02-preprocessed/`.
+
+### Notebooks
+
+- `generate_experiment_notebooks.py`: Generate timestamped experiment notebooks under `notebooks/attack_type/`.
+
+### Attack Type training
+
+- `train_attack_type_random_forest.py`: Train Random Forest for `Attack Type`.
+- `train_attack_type_xgboost.py`: Train XGBoost for `Attack Type`.
+
+### Attack Type inference
+
+- `infer_attack_type_random_forest.py`: Score a chosen split (`--split`) with the latest RF model.
+- `infer_attack_type_xgboost.py`: Score a chosen split (`--split`) with the latest XGBoost model.
 
 ## Conventions
 
@@ -31,8 +46,13 @@ You can add scripts like:
 ## Example (suggested)
 
 ```bash
-python -m entrypoints.train --config config/local.yaml
-python -m entrypoints.predict --config config/prod.yaml
+python entrypoints/prepare_dataset.py
+
+python entrypoints/train_attack_type_random_forest.py --n-estimators 500
+python entrypoints/train_attack_type_xgboost.py --n-estimators 600 --learning-rate 0.05
+
+python entrypoints/infer_attack_type_random_forest.py --split test --limit 1000
+python entrypoints/infer_attack_type_xgboost.py --split test --limit 1000
 ```
 
 ## How This Fits

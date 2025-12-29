@@ -90,3 +90,12 @@ reports/
   - predictions → `data/04-predictions/`
 - Results are produced by pipeline code in `src/pipelines/` and executed via `entrypoints/`.
 - If you use notebooks for exploration, the final narrative should be distilled into a report here.
+
+## Project note
+
+For Attack Type runs, training/inference artifacts (including `*_metrics.json` and `*_manifest.json`) are written under:
+
+- `data/04-predictions/attack_type/training/<timestamp>/`
+- `data/04-predictions/attack_type/inference/<timestamp>/`
+
+Reports in this folder should link to those manifests/metrics rather than duplicating large artifacts.

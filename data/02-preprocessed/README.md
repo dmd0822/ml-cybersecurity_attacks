@@ -24,6 +24,27 @@ data/02-preprocessed/
     v1/
 ```
 
+## Current prepared dataset format
+
+Prepared datasets written by `python entrypoints/prepare_dataset.py` use a single folder per run, e.g.:
+
+```text
+data/02-preprocessed/
+  cybersecurity_attacks_v1_2025-12-29/
+    cleaned.parquet   # when Parquet support is available
+    cleaned.csv       # fallback
+    split.csv
+    attack_type_classes.json
+    baseline_feature_config.json
+    feature_audit.csv
+    manifest.json
+```
+
+Notes:
+
+- The split is a shared stratified `train`/`val`/`test` assignment.
+- Training/inference pipelines and notebooks default to using the *latest* prepared dataset folder.
+
 ## How This Fits
 
 - Upstream: raw inputs in [`data/01-raw/`](../01-raw/)

@@ -23,11 +23,22 @@ The goal is to preserve original data exactly as received so the full pipeline i
 data/01-raw/
   source_a/2025-12-22/
   source_b/v1/
+  teamincribo_cyber-security-attacks/2025-12-29/
+```
+
+For this project, raw snapshots are stored under:
+
+- `data/01-raw/teamincribo_cyber-security-attacks/<YYYY-MM-DD>/`
+
+You can create a new snapshot using:
+
+```bash
+python entrypoints/download_kaggle_dataset.py --snapshot-date YYYY-MM-DD
 ```
 
 ## How This Fits
 
 - Upstream: external systems / data sources
 - Downstream: preprocessing outputs in [`data/02-preprocessed/`](../02-preprocessed/)
-- Processing logic typically lives in [pipeline code](../../s%72c/pipelines/) and is run via [`entrypoints/`](../../entrypoints/)
+- Processing logic typically lives in pipeline code under `src/pipelines/` and is run via [`entrypoints/`](../../entrypoints/)
 

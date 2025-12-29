@@ -31,6 +31,11 @@ If you’re using Python, a common choice is `pytest`:
 pytest
 ```
 
+## Current test suite
+
+- `test_python_files_compile.py`: Syntax/compile smoke test for all Python files under `src/` and `entrypoints/`.
+- `test_attack_type_training_utils.py`: Unit tests for Attack Type pipeline utilities (dataset selection, splits, preprocessing, and error cases).
+
 ## How This Fits
 
 - Primarily validates logic in [`src/pipelines/`](../src/pipelines/)

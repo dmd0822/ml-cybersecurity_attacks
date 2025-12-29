@@ -1,0 +1,11 @@
+{
+  "created_utc": "2025-12-29T23:20:43+00:00",
+  "task": "attack_type",
+  "model": "random_forest",
+  "split": "test",
+  "model_artifact": "C:\\repos\\ml-cybersecurity_attacks\\data\\04-predictions\\attack_type\\training\\20251229_182030\\attack_type_random_forest_model.joblib",
+  "model_run_dir": "C:\\repos\\ml-cybersecurity_attacks\\data\\04-predictions\\attack_type\\training\\20251229_182030",
+  "prepared_dataset_dir": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29",
+  "prepared_manifest": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\manifest.json",
+  "outputs_dir": "C:\\repos\\ml-cybersecurity_attacks\\data\\04-predictions\\attack_type\\inference\\20251229_182043"
+}
