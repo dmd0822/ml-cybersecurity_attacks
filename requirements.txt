@@ -1,0 +1,22 @@
+
+# Core ML / data
+numpy
+pandas
+scikit-learn
+
+# Visualization (optional but common)
+matplotlib
+
+# Notebooks
+jupyter
+ipykernel
+
+# Utilities
+tqdm
+
+# Testing
+pytest
+pytest-cov
+
+# Lint/format (optional but recommended)
+ruff
