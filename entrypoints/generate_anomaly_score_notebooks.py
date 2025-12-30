@@ -179,10 +179,11 @@ def _preprocess_cell(needs_scaling: bool) -> str:
 
 def _regression_eval_cell() -> str:
     return (
-        "from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n\n"
+        "from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n"
+        "import numpy as np\n\n"
         "def eval_split(name: str, y_true, y_pred) -> dict[str, float]:\n"
         "    mae = mean_absolute_error(y_true, y_pred)\n"
-        "    rmse = mean_squared_error(y_true, y_pred, squared=False)\n"
+        "    rmse = float(np.sqrt(mean_squared_error(y_true, y_pred)))\n"
         "    r2 = r2_score(y_true, y_pred)\n"
         "    print(f'\\n== {name} ==')\n"
         "    print(f'MAE:  {mae:.4f}')\n"
