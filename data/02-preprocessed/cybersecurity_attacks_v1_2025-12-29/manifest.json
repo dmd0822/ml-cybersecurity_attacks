@@ -16,6 +16,26 @@
     "class_map": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\attack_type_classes.json",
     "feature_audit": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\feature_audit.csv",
     "baseline_feature_config": "C:\\repos\\ml-cybersecurity_attacks\\config\\baseline_feature_config.json",
-    "baseline_feature_config_snapshot": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\baseline_feature_config.json"
+    "baseline_feature_config_snapshot": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\baseline_feature_config.json",
+    "split_time": "C:\\repos\\ml-cybersecurity_attacks\\data\\02-preprocessed\\cybersecurity_attacks_v1_2025-12-29\\split_time_70_15_15.csv"
+  },
+  "time_split": {
+    "generated_utc": "2025-12-30T00:02:16+00:00",
+    "time_col": "Timestamp",
+    "row_id_col": "row_id",
+    "strategy": "chronological_timestamp_grouped",
+    "fractions": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "report": {
+      "rows": 40000,
+      "train_rows": 28000,
+      "val_rows": 6000,
+      "test_rows": 6000,
+      "train_target": 28000,
+      "val_target": 34000
+    }
   }
 }
